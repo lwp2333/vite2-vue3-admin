@@ -124,11 +124,11 @@ let stopWatch = null
 onMounted(() => {
   init()
   nextTick(() => {
-    stopWatch = watch(() => {
+    stopWatch = watch([width, height], () => {
       const maxWidth = parseInt(width.value * 0.72)
       const maxHeight = parseInt(height.value * 0.72)
       init(maxWidth, maxHeight)
-    }, [width, height])
+    })
   })
 })
 onBeforeUnmount(() => {
