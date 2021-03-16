@@ -1,76 +1,111 @@
 <template>
-  点击复制（v-copy指令）：
-  <a-tag v-copy color="blue"> {{ text }} </a-tag>
-  <a-form :model="formState" :label-col="labelCol" :wrapper-col="wrapperCol">
-    <a-form-item label="Activity name" name="name">
-      <a-input v-focus v-model:value="formState.name" />
+  <a-form :ref="setRef" :model="form" :rules="rules" :label-col="labelCol" :wrapper-col="wrapperCol">
+    <a-form-item label="活动名称" name="name">
+      <a-input v-model:value="form.name" />
     </a-form-item>
-    <a-form-item label="Activity zone" name="region">
-      <a-select v-model:value="formState.region" placeholder="please select your zone">
-        <a-select-option value="shanghai">Zone one</a-select-option>
-        <a-select-option value="beijing">Zone two</a-select-option>
+    <a-form-item label="活动代号" name="nickName">
+      <a-input v-model:value="form.nickName" />
+    </a-form-item>
+    <a-form-item label="活动电话" name="phone">
+      <a-input v-model:value="form.phone" />
+    </a-form-item>
+    <a-form-item label="举办人身份证" name="idcard">
+      <a-input v-model:value="form.idcard" />
+    </a-form-item>
+    <a-form-item label="活动邮箱" name="email">
+      <a-input v-model:value="form.email" />
+    </a-form-item>
+    <a-form-item label="活动地址" name="region">
+      <a-select v-model:value="form.region" placeholder="请选择活动地址">
+        <a-select-option value="北京"> 北京 </a-select-option>
+        <a-select-option value="上海"> 上海 </a-select-option>
+        <a-select-option value="杭州"> 杭州 </a-select-option>
       </a-select>
     </a-form-item>
-    <a-form-item label="Activity time" name="date">
-      <a-date-picker
-        v-model:value="formState.date"
-        format="YYYY-MM-DD"
-        valueFormat="YYYY-MM-DD"
-        show-time
-        type="date"
-        placeholder="Pick a date"
-      />
+    <a-form-item label="活动时间" required name="date">
+      <a-date-picker format="YYYY-MM-DD HH:mm:ss" valueFormat="YYYY-MM-DD HH:mm:ss" v-model:value="form.date" show-time type="date" />
     </a-form-item>
-    <a-form-item label="Instant delivery" name="delivery">
-      <a-switch v-model:checked="formState.delivery" />
+    <a-form-item label="是否发布" name="publish">
+      <a-switch v-model:checked="form.publish" />
     </a-form-item>
-    <a-form-item label="Activity type" name="type">
-      <a-checkbox-group v-model:value="formState.type">
-        <a-checkbox value="1" name="type">Online</a-checkbox>
-        <a-checkbox value="2" name="type">Promotion</a-checkbox>
-        <a-checkbox value="3" name="type">Offline</a-checkbox>
+    <a-form-item label="活动类型" name="type">
+      <a-checkbox-group v-model:value="form.type">
+        <a-checkbox value="1" name="type"> one </a-checkbox>
+        <a-checkbox value="2" name="type"> two </a-checkbox>
+        <a-checkbox value="3" name="type"> three </a-checkbox>
       </a-checkbox-group>
     </a-form-item>
-    <a-form-item label="Resources" name="resource">
-      <a-radio-group v-model:value="formState.resource">
-        <a-radio value="1">Sponsor</a-radio>
-        <a-radio value="2">Venue</a-radio>
+    <a-form-item label="活动来源" name="resource">
+      <a-radio-group v-model:value="form.resource">
+        <a-radio value="线上"> 线上 </a-radio>
+        <a-radio value="线下"> 线下 </a-radio>
       </a-radio-group>
     </a-form-item>
-    <a-form-item label="Activity form" name="textarea">
-      <a-input v-model:value="formState.desc" type="textarea" />
+    <a-form-item label="活动描述" name="desc">
+      <a-textarea v-model:value="form.desc" />
     </a-form-item>
-    <a-form-item :wrapper-col="{ span: 14, offset: 4 }">
+    <a-form-item :wrapper-col="{ span: 14, offset: 6 }">
       <a-space size="large">
-        <a-button @click="onCancel">Cancel</a-button>
-        <a-button type="primary" @click="onSubmit">Create</a-button>
+        <a-button type="primary" @click="onSubmit"> 确定 </a-button>
+        <a-button @click="resetForm"> 重置 </a-button>
       </a-space>
     </a-form-item>
   </a-form>
 </template>
 
 <script setup>
-import { reactive } from 'vue'
-import { Moment } from 'moment'
-const formList = reactive([])
-const formState = reactive({
-  name: '',
-  region: undefined,
-  date: undefined,
-  delivery: false,
-  type: [],
-  resource: '',
-  desc: '',
-})
-const labelCol = { span: 4 }
-const wrapperCol = { span: 8 }
-const onCancel = () => {}
-const onSubmit = () => {}
-const text = `思念变成海，在窗外进不来`
-</script>
-
-<style lang="less">
-.box {
-  height: 1200px;
+import { reactive, ref } from 'vue'
+import { NotEmpty, NotSelect, NotRadio, limitStr, nickStr, phoneStr, idCardStr, emailStr } from '@/utils/validate'
+const labelCol = {
+  xl: 4,
+  md: 6,
+  xs: 8,
 }
-</style>
+const wrapperCol = {
+  xl: 12,
+  md: 14,
+  xs: 16,
+}
+const ruleForm = ref(null)
+const form = reactive({
+  name: null,
+  nickName: null,
+  phone: null,
+  idcard: null,
+  email: null,
+  region: null,
+  date: null,
+  publish: null,
+  type: [],
+  resource: null,
+  desc: null,
+})
+const setRef = el => {
+  ruleForm.value = el
+}
+const onSubmit = () => {
+  ruleForm.value
+    .validate()
+    .then(() => {
+      console.log('values', form)
+    })
+    .catch(error => {
+      console.log('error', error)
+    })
+}
+const resetForm = () => {
+  ruleForm.value.resetFields()
+}
+const rules = {
+  name: [limitStr('活动名称')],
+  nickName: [nickStr('活动代号')],
+  phone: [phoneStr()],
+  idcard: [idCardStr()],
+  email: [emailStr()],
+  region: [NotRadio('活动地址')],
+  date: [NotRadio('活动时间')],
+  type: [NotSelect('活动类型')],
+  resource: [NotRadio('活动来源')],
+  desc: [NotEmpty('活动描述')],
+}
+</script>

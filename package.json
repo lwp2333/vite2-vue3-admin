@@ -14,8 +14,6 @@
     "@logicflow/extension": "^0.2.9",
     "ant-design-vue": "^2.0.1",
     "axios": "^0.21.1",
-    "echarts": "^5.0.2",
-    "moment": "^2.29.1",
     "normalize.css": "^8.0.1",
     "nprogress": "^0.2.0",
     "vue": "^3.0.5",

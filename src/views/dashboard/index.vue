@@ -14,7 +14,7 @@ LogicFlow.use(Control)
 LogicFlow.use(Menu)
 LogicFlow.use(DndPanel)
 LogicFlow.use(Snapshot)
-import { onMounted, reactive, ref, watch, nextTick, onBeforeUnmount } from 'vue'
+import { onMounted, reactive, ref, watch, nextTick, onBeforeUnmount, watchEffect } from 'vue'
 import useSize from '@/hooks/useSize'
 const { width, height } = useSize('appContent')
 const data = reactive({
@@ -55,7 +55,6 @@ const data = reactive({
 const container = ref(null)
 let lf = null
 const exportShot = () => {
-  console.log(lf)
   lf && lf.getSnapshot()
 }
 const init = (width, height) => {
@@ -122,9 +121,8 @@ const init = (width, height) => {
 }
 let stopWatch = null
 onMounted(() => {
-  init()
   nextTick(() => {
-    stopWatch = watch([width, height], () => {
+    stopWatch = watchEffect(() => {
       const maxWidth = parseInt(width.value * 0.72)
       const maxHeight = parseInt(height.value * 0.72)
       init(maxWidth, maxHeight)
