@@ -150,9 +150,9 @@ watchEffect(() => {
 
 ##### 图例
 
-![pc](docs\img\pc.png)
+![pc](docs/img/pc.png)
 
-![iphone](docs\img\iphone.png)
+![iphone](docs/img/iphone.png)
 
-![iphone2](docs\img\iphone2.png)
+![iphone2](docs/img/iphone2.png)
 
