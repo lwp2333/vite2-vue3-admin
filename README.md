@@ -1,6 +1,6 @@
 # Vite2Admin
 #### Vite2 + Vue3.0 + ant-design 2.x
-
+[线上地址]: http://admin.lwp.fun	"可注册成功后登入"
 ##### 目录树
 
 ```
