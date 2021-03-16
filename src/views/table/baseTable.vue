@@ -1,7 +1,5 @@
 <template>
-  <a-space size="large">
-    <a-button type="primary">baseTable</a-button>
-  </a-space>
+  <g-search-table></g-search-table>
 </template>
 
 <script setup></script>
