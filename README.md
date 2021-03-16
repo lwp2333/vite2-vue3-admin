@@ -1,6 +1,6 @@
-# Vite2Admin
+# vite2-vue3-admin
 #### Vite2 + Vue3.0 + ant-design 2.x
-
+[线上地址 ](http://admin.lwp.fun) tips：可注册成功后登入
 ##### 目录树
 
 ```
@@ -150,9 +150,9 @@ watchEffect(() => {
 
 ##### 图例
 
-![pc](docs\img\pc.png)
+![pc](docs/img/pc.png)
 
-![iphone](docs\img\iphone.png)
+![iphone](docs/img/iphone.png)
 
-![iphone2](docs\img\iphone2.png)
+![iphone2](docs/img/iphone2.png)
 
