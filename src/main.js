@@ -10,6 +10,7 @@ import './permisson' // 权限
 import * as AntIcon from '@ant-design/icons-vue' // 全局图标
 import components from './components/global' // 全局组件
 import directives from './directives' // 全局指令
+import 'moment/dist/locale/zh-cn'
 const app = createApp(App)
 app.config.productionTip = false
 // 注册全局组件

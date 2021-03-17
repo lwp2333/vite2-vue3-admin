@@ -10,8 +10,6 @@
   "dependencies": {
     "@ant-design/icons-vue": "^6.0.1",
     "@antv/g2": "^4.1.12",
-    "@logicflow/core": "^0.2.9",
-    "@logicflow/extension": "^0.2.9",
     "ant-design-vue": "^2.0.1",
     "axios": "^0.21.1",
     "normalize.css": "^8.0.1",
