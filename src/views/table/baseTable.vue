@@ -17,10 +17,70 @@
       </a-table>
     </template>
   </g-search-table>
+
+  <span class="title">主题颜色更改</span>
+  <a-input-group compact>
+    <a-select v-model:value="type" :options="typeOptions"> </a-select>
+    <a-auto-complete v-model:value="color" :options="dataSource" placeholder="请选择或输入颜色值" />
+    <a-button type="primary" @click="handelUpdate">更改</a-button>
+  </a-input-group>
 </template>
 
 <script setup>
+import { message } from 'ant-design-vue'
 import { ref, useContext } from 'vue'
+const typeOptions = [
+  {
+    label: '@primary-color',
+    value: '@primary-color',
+  },
+  {
+    label: '@border-color-base',
+    value: '@border-color-base',
+  },
+]
+const type = ref('@primary-color')
+const color = ref('#1890ff')
+const dataSource = [
+  {
+    label: '#1890ff',
+    value: '#1890ff',
+  },
+  {
+    label: '#52c41a',
+    value: '#52c41a',
+  },
+  {
+    label: '#faad14',
+    value: '#faad14',
+  },
+  {
+    label: '#f5222d',
+    value: '#f5222d',
+  },
+  {
+    label: '#dce3e8',
+    value: '#dce3e8',
+  },
+]
+
+const handelUpdate = () => {
+  if (!window.less) {
+    message.warn('不支持less.modifyVars')
+    return
+  }
+  const data = {
+    [type.value]: color.value,
+  }
+  window.less
+    .modifyVars(data)
+    .then(() => {
+      message.success('修改成功！')
+    })
+    .catch(() => {
+      message.error('修改失败！')
+    })
+}
 const extraRowCol = {
   xs: 4,
   sm: 12,

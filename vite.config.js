@@ -29,6 +29,9 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       less: {
+        modifyVars: {
+          '@border-color-base': '#dce3e8'
+        },
         javascriptEnabled: true,
       },
     },

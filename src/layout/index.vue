@@ -65,8 +65,9 @@
 </template>
 
 <script setup>
-import { reactive, ref, toRefs, watch, watchEffect } from 'vue'
+import { reactive, ref, toRefs, watch, watchEffect, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import { useStore } from 'vuex'
 import { removeAllToken } from '@/utils/auth'
 import avatar from '@/assets/svg/avatar.svg'
 import siderContent from './siderContent.vue'
@@ -93,31 +94,35 @@ const footerStyle = {
 const drawerBodyStyle = {
   padding: '0px',
 }
+const Router = useRouter()
+const Route = useRoute()
+const Store = useStore()
+
 const collapsed = ref(false)
 const breakPointValue = ref(false)
-const drawerSider = ref(false)
-
+const drawerSider = computed(() => {
+  return Store.getters.drawerStatus
+})
 const breakpoint = value => {
   breakPointValue.value = value
   // 是否触发断点 初始决定是否启用
-  drawerSider.value = value
+  Store.commit('appInfo/SET_drawerStatus', value)
 }
 const handleCollapsed = () => {
   collapsed.value = !collapsed.value
   if (breakPointValue.value) {
-    drawerSider.value = true
+    Store.commit('appInfo/SET_drawerStatus', true)
   }
 }
 const onClose = () => {
-  drawerSider.value = false
+  Store.commit('appInfo/SET_drawerStatus', false)
 }
 
 // 面包屑逻辑
 const currentRouteInfo = reactive({
   matchList: [],
 })
-const Router = useRouter()
-const Route = useRoute()
+
 watchEffect(() => {
   const { matched } = Route
   currentRouteInfo.matchList = [...matched]

@@ -3,6 +3,7 @@ import { createStore } from 'vuex'
 import userInfo from './modules/userInfo'
 import permissonInfo from './modules/permissonInfo'
 import menuInfo from './modules/menuInfo'
+import appInfo from './modules/appInfo'
 
 // getters、 actions 、 mutations
 import actions from './actions'
@@ -14,6 +15,7 @@ const Store = createStore({
     userInfo,
     permissonInfo,
     menuInfo,
+    appInfo,
   },
   mutations,
   actions,
