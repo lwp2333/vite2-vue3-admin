@@ -139,7 +139,6 @@ const initPieEvent = () => {
     return
   }
   myEchart.on('mouseover', e => {
-    const { currDataList, currentIndex } = this
     // 判断当前高亮是否是为悬浮的dataIndex
     const { dataIndex } = e
     if (currentIndex !== -1 && dataIndex !== currDataList[currentIndex].dataIndex) {

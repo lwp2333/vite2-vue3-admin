@@ -4,5 +4,6 @@ import form from './modules/form'
 import table from './modules/table'
 import setting from './modules/setting'
 import multiLevelMenu from './modules/multiLevelMenu'
-const asyncRoutes = [dashBoard, form, table, setting, multiLevelMenu]
+import exampleCenter from './modules/exampleCenter'
+const asyncRoutes = [dashBoard, form, table, setting, exampleCenter, multiLevelMenu]
 export default asyncRoutes

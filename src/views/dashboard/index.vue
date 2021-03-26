@@ -2,10 +2,10 @@
   <div class="dashboard">
     <a-row>
       <a-col v-for="(item, index) in list" :xl="8" :md="12" :xs="24" :key="index">
-        <card-info v-if="index % 2 === 0" :title="`运行监测.${index}`" source="运行处" updateTime="2021-03-21">
+        <card-info v-if="index % 2 === 0" title="● 运行监测" source="运行处" updateTime="2021-03-21">
           <bar-line-echart width="480px" height="360px" :xAxis="xAxis" :yAxisBar="yAxisBar" :yAxisLine="yAxisLine"></bar-line-echart>
         </card-info>
-        <card-info v-else title="数据分析" source="运行处" updateTime="2021-03-21">
+        <card-info v-else title="● 数据分析" source="运行处" updateTime="2021-03-21">
           <pie-echart width="480px" height="360px" :data="pieData"></pie-echart>
         </card-info>
       </a-col>
