@@ -54,8 +54,8 @@ const openChange = keys => {
   Store.commit('menuInfo/SET_openKeys', keys)
 }
 const handleCLick = ({ key }) => {
-  Router.push({ path: key })
   Store.commit('appInfo/SET_drawerStatus', false)
+  Router.push({ path: key })
 }
 watchEffect(() => {
   const { matched: matchList } = Route

@@ -39,9 +39,6 @@ const options = computed(() => {
       formatter: '{b}<br /> 数量占比： {d}%',
     },
     legend: {
-      orient: 'vertical',
-      right: 14,
-      top: 'center',
       icon: 'circle',
     },
     color: colorList,
@@ -54,12 +51,12 @@ const options = computed(() => {
         label: {
           show: false,
           position: 'center',
-          formatter: '{b}\n {c}个',
+          formatter: '{b}\n{c}个',
         },
         emphasis: {
           label: {
             show: true,
-            fontSize: '22',
+            fontSize: '20',
             fontWeight: 'bold',
           },
         },
