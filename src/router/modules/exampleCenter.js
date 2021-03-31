@@ -6,6 +6,7 @@ const exampleCenter = {
     icon: 'AppstoreTwoTone',
   },
   component: () => import('@/views/exampleCenter/index.vue'),
+  redirect: '/exampleCenter/iconGallery',
   children: [
     {
       path: 'qrCode',
@@ -15,6 +16,15 @@ const exampleCenter = {
         icon: 'InteractionTwoTone',
       },
       component: () => import('@/views/exampleCenter/qrCode.vue'),
+    },
+    {
+      path: 'iconGallery',
+      name: 'iconGallery',
+      meta: {
+        title: '图标展示',
+        icon: 'InteractionTwoTone',
+      },
+      component: () => import('@/views/exampleCenter/iconGallery.vue'),
     },
   ],
 }
