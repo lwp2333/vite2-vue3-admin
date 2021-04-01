@@ -27,7 +27,7 @@ const Router = createRouter({
       meta: {
         title: '主页',
       },
-      redirect: '/dashBoard',
+      redirect: '/setting/menuConfig',
       component: () => import('@/layout/index.vue'),
     },
     {

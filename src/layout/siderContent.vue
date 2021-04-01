@@ -16,14 +16,14 @@
       class="g-scrollbar-y"
     >
       <template v-for="item in menuList">
-        <a-menu-item v-if="!item.children" :key="item.key">
-          <a-icon :type="item.icon" />
+        <a-menu-item v-if="!item.children" :key="item.path">
+          <icon-font :type="item.iconType" />
           <!-- <span>{{ item.title }}</span> -->
           <a-badge :dot="!item.show">
             {{ item.title }}
           </a-badge>
         </a-menu-item>
-        <sub-menu v-else :key="item.key" :menu-info="item" />
+        <sub-menu v-else :key="item.path" :menu-info="item" />
       </template>
     </a-menu>
   </div>
@@ -41,6 +41,11 @@ const Route = useRoute()
 const menuList = computed(() => {
   return Store.getters.menuList
 })
+
+const initMenuList = () => {
+  Store.dispatch('menuInfo/generateMenu')
+}
+initMenuList()
 const menuOpenKeys = computed(() => {
   return Store.getters.menuOpenKeys
 })

@@ -6,4 +6,5 @@ import setting from './modules/setting'
 import multiLevelMenu from './modules/multiLevelMenu'
 import exampleCenter from './modules/exampleCenter'
 const asyncRoutes = [dashBoard, form, table, setting, exampleCenter, multiLevelMenu]
+console.log(asyncRoutes)
 export default asyncRoutes

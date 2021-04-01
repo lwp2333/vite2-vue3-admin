@@ -1,15 +1,15 @@
 <template functional>
-  <a-sub-menu :key="menuInfo.key">
+  <a-sub-menu :key="menuInfo.path">
     <template #title>
-      <a-icon :type="menuInfo.icon" />
+      <icon-font :type="menuInfo.iconType" />
       <span>{{ menuInfo.title }}</span>
     </template>
     <template v-for="item in menuInfo.children">
-      <a-menu-item v-if="!item.children" :key="item.key">
-        <a-icon :type="item.icon" />
+      <a-menu-item v-if="!item.children" :key="item.path">
+        <icon-font :type="item.iconType" />
         <span>{{ item.title }}</span>
       </a-menu-item>
-      <sub-menu v-else :key="item.key" :menu-info="item" />
+      <sub-menu v-else :key="item.path" :menu-info="item" />
     </template>
   </a-sub-menu>
 </template>

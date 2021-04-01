@@ -1,5 +1,7 @@
 import { routesToMenuTree } from '@/utils'
 import asyncRoutes from '@/router/asyncRoutes'
+import { getMenuList } from '@/api/menu'
+
 const state = {
   // 菜单列表
   menuList: routesToMenuTree(asyncRoutes),
@@ -20,8 +22,9 @@ const mutations = {
   },
 }
 const actions = {
-  generateMenu({ state, commit }, authMenu) {
-    commit('SET_menuList', authMenu)
+  async generateMenu({ state, commit }) {
+    const res = await getMenuList().catch(() => {})
+    commit('SET_menuList', res || [])
   },
 }
 
