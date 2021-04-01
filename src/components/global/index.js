@@ -4,6 +4,7 @@ import gSearchTable from './gSearchTable.vue'
 import cardInfo from './cardInfo.vue'
 import barLineEchart from './barLineEchart.vue'
 import pieEchart from './pieEchart.vue'
+import flatSelect from './flatSelect.vue'
 const globalComponents = {
   aIcon,
   iconFont,
@@ -11,5 +12,6 @@ const globalComponents = {
   cardInfo,
   barLineEchart,
   pieEchart,
+  flatSelect,
 }
 export default globalComponents

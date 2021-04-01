@@ -26,6 +26,15 @@ const exampleCenter = {
       },
       component: () => import('@/views/exampleCenter/iconGallery.vue'),
     },
+    {
+      path: 'flatSelect',
+      name: 'flatSelect',
+      meta: {
+        title: '平铺选择器',
+        icon: 'InteractionTwoTone',
+      },
+      component: () => import('@/views/exampleCenter/flatSelectPage.vue'),
+    },
   ],
 }
 export default exampleCenter
