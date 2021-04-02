@@ -1,5 +1,4 @@
 import { createStore } from 'vuex'
-
 const modules = import.meta.globEager('./modules/*.js')
 const map = {}
 Object.keys(modules).forEach(file => {
