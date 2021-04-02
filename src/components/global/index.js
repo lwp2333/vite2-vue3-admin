@@ -1,19 +1,13 @@
-import noData from './noData.vue'
-import aIcon from './aIcon.vue'
 import iconFont from './iconFont'
-import gSearchTable from './gSearchTable.vue'
-import cardInfo from './cardInfo.vue'
-import barLineEchart from './barLineEchart.vue'
-import pieEchart from './pieEchart.vue'
-import flatSelect from './flatSelect.vue'
+const modules = import.meta.globEager('./*.vue')
+const map = {}
+Object.keys(modules).forEach(file => {
+  const modulesName = file.replace('./', '').replace('.vue', '')
+  map[modulesName] = modules[file].default
+})
+console.log(map)
 const globalComponents = {
-  noData,
-  aIcon,
+  ...map,
   iconFont,
-  gSearchTable,
-  cardInfo,
-  barLineEchart,
-  pieEchart,
-  flatSelect,
 }
 export default globalComponents
