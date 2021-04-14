@@ -35,6 +35,15 @@ const exampleCenter = {
       },
       component: () => import('@/views/exampleCenter/flatSelectPage.vue'),
     },
+    {
+      path: 'wangEditor',
+      name: 'wangEditor',
+      meta: {
+        title: '富文本编辑',
+        icon: 'InteractionTwoTone',
+      },
+      component: () => import('@/views/exampleCenter/wangEditor.vue'),
+    },
   ],
 }
 export default exampleCenter

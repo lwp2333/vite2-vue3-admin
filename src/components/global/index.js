@@ -5,7 +5,6 @@ Object.keys(modules).forEach(file => {
   const modulesName = file.replace('./', '').replace('.vue', '')
   map[modulesName] = modules[file].default
 })
-console.log(map)
 const globalComponents = {
   ...map,
   iconFont,
