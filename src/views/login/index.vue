@@ -9,10 +9,10 @@
         <div class="loginForm" v-if="tabkey === 'login'">
           <a-form :ref="setloginRef" :model="loginForm" :rules="loginRules" :label-col="labelCol" :wrapper-col="wrapperCol">
             <a-form-item label="用户名" name="name" :span="24">
-              <a-input v-model:value="loginForm.name" placeholder="用户名随便输入" />
+              <a-input v-model:value="loginForm.name" placeholder="请输入用户名" />
             </a-form-item>
             <a-form-item label="密码" name="password">
-              <a-input-password v-model:value="loginForm.password" placeholder="密码随便输入" />
+              <a-input-password v-model:value="loginForm.password" @keyup.enter="loginAction" placeholder="请输入密码" />
             </a-form-item>
           </a-form>
           <div class="action">

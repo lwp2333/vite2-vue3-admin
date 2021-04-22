@@ -177,7 +177,7 @@ const searchFileds = [
   },
   {
     type: 'a-range-picker',
-    label: '输入框',
+    label: '日期范围',
     key: 'range',
     otherOptions: {
       placeholder: ['开始日期', '结束日期'],

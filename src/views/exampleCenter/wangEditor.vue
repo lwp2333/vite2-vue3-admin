@@ -16,6 +16,7 @@ const content = reactive({
 let instance
 onMounted(() => {
   instance = new Wangeditor(editor.value)
+  instance.config.zIndex = 500
   Object.assign(instance.config, {
     onchange() {
       content.html = instance.txt.html()
@@ -31,6 +32,6 @@ onBeforeUnmount(() => {
 
 <style scoped lang="less">
 .wangEditor {
-  padding: 48px;
+  padding: 24px 0px;
 }
 </style>
