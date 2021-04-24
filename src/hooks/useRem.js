@@ -4,7 +4,7 @@ import useWinResize from './useWinResize'
  *
  * @param {dom id节点或者 ref句柄} target
  */
-export default function useSize() {
+export default function useRem() {
   const htmlFontSize = ref(100)
   const setRem = () => {
     const baseSize = 100
