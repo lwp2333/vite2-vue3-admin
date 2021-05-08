@@ -1,6 +1,9 @@
 # vite2-vue3-admin
+
 #### Vite2 + Vue3.0 + ant-design 2.x
-[线上地址 ](http://admin.lwp.fun) tips：可注册成功后登入
+
+[admin.lwp.fun ](http://admin.lwp.fun) tips：可注册成功后登入
+
 ##### 目录树
 
 ```
@@ -66,10 +69,11 @@
 │  index.html
 │  package.json
 │  README.md
+│  postcss.config.js
 │  vite.config.js
 ```
 
-##### 全面使用 script setup 实验性功能😂
+##### 使用 script setup与css v-bind 实验性功能 😂
 
 ```vue
 <template>
@@ -90,14 +94,14 @@
       class="g-scrollbar-y"
     >
       <template v-for="item in menuList">
-        <a-menu-item v-if="!item.children" :key="item.key">
-          <a-icon :type="item.icon" />
+        <a-menu-item v-if="!item.children" :key="item.path">
+          <icon-font :type="item.iconType" />
           <!-- <span>{{ item.title }}</span> -->
           <a-badge :dot="!item.show">
             {{ item.title }}
           </a-badge>
         </a-menu-item>
-        <sub-menu v-else :key="item.key" :menu-info="item" />
+        <sub-menu v-else :key="item.path" :menu-info="item" />
       </template>
     </a-menu>
   </div>
@@ -115,6 +119,11 @@ const Route = useRoute()
 const menuList = computed(() => {
   return Store.getters.menuList
 })
+
+const initMenuList = () => {
+  Store.dispatch('menuInfo/generateMenu')
+}
+initMenuList()
 const menuOpenKeys = computed(() => {
   return Store.getters.menuOpenKeys
 })
@@ -128,6 +137,7 @@ const openChange = keys => {
   Store.commit('menuInfo/SET_openKeys', keys)
 }
 const handleCLick = ({ key }) => {
+  Store.commit('appInfo/SET_drawerStatus', false)
   Router.push({ path: key })
 }
 watchEffect(() => {
@@ -144,15 +154,169 @@ watchEffect(() => {
 </script>
 
 <style scoped lang="less">
+.siderContent {
+  height: 100vh;
+  padding: 30px 0px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  .logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 24px;
+    font-weight: 600;
+    font-size: 18px;
+  }
+}
+.ant-menu-inline {
+  border: none;
+}
+</style>
+```
+
+```vue
+<template>
+  <div class="flatSelect">
+    <div class="title">
+      <slot name="title"> {{ title }}： </slot>
+    </div>
+    <div class="options">
+      <slot>
+        <span v-for="(option, index) in options" class="option" :class="isActive(option)" @click="selected(option)" :key="index">
+          {{ option.label }}
+        </span>
+      </slot>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { defineProps, toRefs, defineEmit, useContext } from 'vue'
+
+defineEmit({
+  'update:value': null,
+})
+const ctx = useContext()
+const props = defineProps({
+  title: {
+    type: String,
+    default: '',
+  },
+  options: {
+    type: Array,
+    default: () => [],
+  },
+  value: {
+    default: () => undefined,
+  },
+  multiple: {
+    type: Boolean,
+    default: () => false,
+  },
+  theme: {
+    type: String,
+    default: '#1890ff',
+  },
+})
+const { multiple, value, theme } = toRefs(props)
+const selected = option => {
+  // 单选
+  if (!multiple.value) {
+    ctx.emit('update:value', option.value)
+    return
+  }
+  // 多选-判断是否存在
+  const selectedList = [...(value.value || [])]
+  const isHas = selectedList.includes(option.value)
+
+  // 多选情况，全部只能选中，不能取消（点击其他项目即取消全选）
+  if (option.value === undefined) {
+    ctx.emit('update:value', undefined)
+    return
+  }
+  if (!isHas) {
+    // 选中
+    selectedList.push(option.value)
+    ctx.emit('update:value', selectedList)
+    return
+  }
+  //取消
+  ctx.emit(
+    'update:value',
+    selectedList.filter(item => item !== option.value)
+  )
+}
+const isActive = option => {
+  if (!multiple.value) {
+    return option.value === value.value ? 'selected' : ''
+  }
+  const selectedList = [...(value.value || [])]
+  const isHas = selectedList.includes(option.value) || (option.value === undefined && !selectedList.length)
+  return isHas ? 'selected' : ''
+}
+</script>
+
+<style scoped lang="less">
+.flatSelect {
+  padding: 4px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 14px;
+  line-height: 14px;
+  &:not(:last-child) {
+    border-bottom: 1px solid rgba(207, 218, 230, 0.5);
+  }
+  .title {
+    min-width: 100px;
+    color: #333333;
+  }
+  .options {
+    flex: 1;
+    min-height: 42px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    .option {
+      display: inline-block;
+      min-width: 64px;
+      text-align: center;
+      cursor: pointer;
+      border: 1px dashed transparent;
+      border-radius: 4px;
+      color: #677380;
+      padding: 6px;
+      margin-bottom: 4px;
+      &:hover {
+        border: 1px dashed v-bind(theme);
+      }
+      &:not(:last-child) {
+        margin-right: 20px;
+      }
+    }
+    .selected {
+      color: #fff;
+      background-color: v-bind(theme);
+    }
+  }
+}
 </style>
 
 ```
+
+
 
 ##### 图例
 
 ![pc](docs/img/pc.png)
 
-![iphone](docs/img/iphone.png)
-
-![iphone2](docs/img/iphone2.png)
+![iphone](docs/img/phone.png)![iphone2](docs/img/phone2.png)
+![iphone3](docs/img/phone3.png)![iphone4](docs/img/phone4.png)
 
