@@ -11,14 +11,14 @@
   >
     <img class="avatar" v-if="avatarUrl" :src="avatarUrl" alt="头像" />
     <div v-else>
-      <loading-outlined v-if="loading"></loading-outlined>
-      <plus-outlined v-else></plus-outlined>
+      <LoadingOutlined v-if="loading" />
+      <PlusOutlined v-else />
       <div class="ant-upload-text">上传头像</div>
     </div>
   </a-upload>
 </template>
 <script setup>
-import { ref, toRefs, defineProps, defineEmit, useContext } from 'vue'
+import { ref } from 'vue'
 import { message } from 'ant-design-vue'
 
 defineProps({
@@ -27,10 +27,7 @@ defineProps({
     default: () => '',
   },
 })
-defineEmit({
-  'update:avatarUrl': null,
-})
-const ctx = useContext()
+const emit = defineEmits(['update:avatarUrl'])
 const fileList = ref([])
 const loading = ref(false)
 const handleChange = ({ file, fileList, event }) => {
@@ -41,7 +38,7 @@ const handleChange = ({ file, fileList, event }) => {
   if (file.status === 'done') {
     const { ossUrl } = file.response.data
     loading.value = false
-    ctx.emit('update:avatarUrl', ossUrl)
+    emit('update:avatarUrl', ossUrl)
     return
   }
   if (file.status === 'error') {

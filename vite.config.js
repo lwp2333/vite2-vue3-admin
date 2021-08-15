@@ -42,5 +42,11 @@ export default defineConfig({
     assetsInlineLimit: 4096,
     cssCodeSplit: true,
     sourcemap: false,
+    terserOptions: {
+      compress: {
+        // 生产环境去除console
+        drop_console: true,
+      },
+    },
   },
 })

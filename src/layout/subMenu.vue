@@ -1,4 +1,4 @@
-<template functional>
+<template>
   <a-sub-menu :key="menuInfo.path">
     <template #title>
       <icon-font :type="menuInfo.iconType" />
@@ -15,7 +15,6 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue'
 defineProps({
   menuInfo: Object,
 })

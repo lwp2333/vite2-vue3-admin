@@ -18,9 +18,20 @@
   </div>
 </template>
 <script setup>
-import { ref, toRefs, defineProps, defineEmit, useContext } from 'vue'
-import { message } from 'ant-design-vue'
+import { ref } from 'vue'
 import useDeviceInfo from '@/hooks/useDeviceInfo'
+
+const emit = defineEmits(['update:imageList'])
+defineProps({
+  imageList: {
+    type: Array,
+    default: () => [],
+  },
+  limit: {
+    type: Number,
+    default: () => 4,
+  },
+})
 
 const previewVisible = ref(false)
 const previewImage = ref('')
@@ -32,20 +43,6 @@ const { mapResultWidth } = useDeviceInfo({
   xl: '52%',
   xxl: '40%',
 })
-defineEmit({
-  'update:imageList': [],
-})
-defineProps({
-  imageList: {
-    type: Array,
-    default: () => [],
-  },
-  limit: {
-    type: Number,
-    default: () => 4,
-  },
-})
-const ctx = useContext()
 
 const handlePreview = async file => {
   previewImage.value = file.url || file.preview
@@ -65,7 +62,7 @@ const handleChange = ({ fileList }) => {
       return item
     }
   })
-  ctx.emit('update:imageList', imageList)
+  emit('update:imageList', imageList)
 }
 </script>
 <style lang="less" scoped>

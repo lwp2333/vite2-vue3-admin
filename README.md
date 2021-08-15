@@ -73,7 +73,7 @@
 │  vite.config.js
 ```
 
-##### 使用 script setup与css v-bind 实验性功能 😂
+##### 使用 script setup 与 css v-bind 实验性功能 😂
 
 ```vue
 <template>
@@ -196,12 +196,9 @@ watchEffect(() => {
 </template>
 
 <script setup>
-import { defineProps, toRefs, defineEmit, useContext } from 'vue'
+import { toRefs } from 'vue'
 
-defineEmit({
-  'update:value': null,
-})
-const ctx = useContext()
+const emit = defineEmits(['update:value', 'update'])
 const props = defineProps({
   title: {
     type: String,
@@ -227,7 +224,7 @@ const { multiple, value, theme } = toRefs(props)
 const selected = option => {
   // 单选
   if (!multiple.value) {
-    ctx.emit('update:value', option.value)
+    emit('update:value', option.value)
     return
   }
   // 多选-判断是否存在
@@ -236,17 +233,17 @@ const selected = option => {
 
   // 多选情况，全部只能选中，不能取消（点击其他项目即取消全选）
   if (option.value === undefined) {
-    ctx.emit('update:value', undefined)
+    emit('update:value', undefined)
     return
   }
   if (!isHas) {
     // 选中
     selectedList.push(option.value)
-    ctx.emit('update:value', selectedList)
+    emit('update:value', selectedList)
     return
   }
   //取消
-  ctx.emit(
+  emit(
     'update:value',
     selectedList.filter(item => item !== option.value)
   )
@@ -308,10 +305,7 @@ const isActive = option => {
   }
 }
 </style>
-
 ```
-
-
 
 ##### 图例
 
@@ -319,4 +313,3 @@ const isActive = option => {
 
 ![iphone](docs/img/phone.png)![iphone2](docs/img/phone2.png)
 ![iphone3](docs/img/phone3.png)![iphone4](docs/img/phone4.png)
-

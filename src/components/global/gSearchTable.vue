@@ -20,7 +20,7 @@
 </template>
 
 <script setup>
-import { reactive, ref, defineProps } from 'vue'
+import { reactive, ref } from 'vue'
 import useTableRequest from '@/hooks/useTableRequest'
 const props = defineProps({
   searchFileds: {

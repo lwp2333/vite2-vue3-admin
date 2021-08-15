@@ -28,7 +28,7 @@
 
 <script setup>
 import { message } from 'ant-design-vue'
-import { ref, useContext } from 'vue'
+import { ref } from 'vue'
 const typeOptions = [
   {
     label: '@primary-color',
@@ -186,7 +186,6 @@ const searchFileds = [
     },
   },
 ]
-const ctx = useContext()
 const gSearch = ref(null)
 const setRef = el => {
   gSearch.value = el

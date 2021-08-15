@@ -106,7 +106,7 @@ const drawerSider = computed(() => {
 const breakpoint = value => {
   breakPointValue.value = value
   // 是否触发断点 初始决定是否启用
-  Store.commit('appInfo/SET_drawerStatus', value)
+  // Store.commit('appInfo/SET_drawerStatus', value)
 }
 const handleCollapsed = () => {
   collapsed.value = !collapsed.value
@@ -115,6 +115,7 @@ const handleCollapsed = () => {
   }
 }
 const onClose = () => {
+  collapsed.value = true
   Store.commit('appInfo/SET_drawerStatus', false)
 }
 

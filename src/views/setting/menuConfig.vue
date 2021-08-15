@@ -23,7 +23,7 @@
             @drop="onDropNode"
           >
             <template #icon="{ iconType }">
-              <icon-font v-if="iconType" :type="iconType" />
+              <icon-font :type="iconType" />
             </template>
           </a-tree>
         </a-card>

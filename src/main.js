@@ -19,7 +19,10 @@ for (const i in components) {
 }
 // 注册全部图标
 for (const i in AntIcon) {
-  app.component(i, AntIcon[i])
+  const whiteList = ['createFromIconfontCN', 'getTwoToneColor', 'setTwoToneColor', 'default']
+  if (!whiteList.includes(i)) {
+    app.component(i, AntIcon[i])
+  }
 }
 // 注册全局指令
 for (const i in directives) {

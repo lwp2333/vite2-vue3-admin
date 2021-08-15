@@ -4,7 +4,7 @@
 
 <script setup>
 import * as Echarts from 'echarts'
-import { computed, defineProps, onMounted, reactive, ref, toRefs, watch } from 'vue'
+import { computed, onMounted, reactive, ref } from 'vue'
 
 const props = defineProps({
   width: {
