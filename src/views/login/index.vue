@@ -76,7 +76,7 @@ const wrapperCol = {
 // 密码确认校验函数
 const validatePass = async (rule, value) => {
   if (registerForm.password) {
-    registerFormRef.value.validateField('confirmPassword')
+    registerFormRef.value.validateFields('confirmPassword')
   }
   return Promise.resolve()
 }
