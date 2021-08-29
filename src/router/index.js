@@ -25,9 +25,9 @@ const Router = createRouter({
       path: '/',
       name: 'app',
       meta: {
-        title: '主页',
+        title: '',
       },
-      redirect: '/setting/menuConfig',
+      redirect: '/dashBoard',
       component: () => import('@/layout/index.vue'),
     },
     {

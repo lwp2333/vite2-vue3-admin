@@ -23,10 +23,10 @@
             <a-breadcrumb>
               <a-breadcrumb-item v-for="(item, index) in matchList" :key="index">
                 <router-link :to="{ path: item.path }">
-                  <!-- <BankOutlined v-if="item.path === '/'" /> -->
-                  <!-- <template v-else> -->
-                  {{ item.meta.title }}
-                  <!-- </template> -->
+                  <HomeOutlined v-if="item.path === '/'" />
+                  <template v-else>
+                    {{ item.meta.title }}
+                  </template>
                 </router-link>
               </a-breadcrumb-item>
             </a-breadcrumb>

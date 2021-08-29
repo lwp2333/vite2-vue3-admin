@@ -309,8 +309,8 @@ const isActive = option => {
 
 ##### 视图
 
-![pc](https://cdn200.oss-cn-hangzhou.aliyuncs.com/md/img/pc.png)
-![iphone](https://cdn200.oss-cn-hangzhou.aliyuncs.com/md/img/phone.png)
-![iphone2](https://cdn200.oss-cn-hangzhou.aliyuncs.com/md/img/phone2.png)
-![iphone3](https://cdn200.oss-cn-hangzhou.aliyuncs.com/md/img/phone3.png)
-![iphone4](https://cdn200.oss-cn-hangzhou.aliyuncs.com/md/img/phone4.png)
+![pc](https://cdn200.oss-cn-hangzhou.aliyuncs.com/md/pc.png)
+![iphone](https://cdn200.oss-cn-hangzhou.aliyuncs.com/md/phone.png)
+![iphone2](https://cdn200.oss-cn-hangzhou.aliyuncs.com/md/phone2.png)
+![iphone3](https://cdn200.oss-cn-hangzhou.aliyuncs.com/md/phone3.png)
+![iphone4](https://cdn200.oss-cn-hangzhou.aliyuncs.com/md/phone4.png)
