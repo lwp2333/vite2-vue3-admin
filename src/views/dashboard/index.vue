@@ -16,7 +16,7 @@
 <script setup>
 import { reactive } from 'vue'
 
-const list = reactive([...new Array(24).keys()])
+const list = reactive([...new Array(6).keys()])
 const xAxis = reactive(['2020-06', '2020-07', '2020-08', '2020-09', '2020-10', '2020-11', '2020-12'])
 const yAxisBar = reactive({
   name: '月消费总额',
@@ -28,20 +28,20 @@ const yAxisLine = reactive({
 })
 const pieData = reactive([
   {
-    name: '在建',
-    value: 37,
+    name: '食',
+    value: 48,
   },
   {
-    name: '已建成',
-    value: 49,
+    name: '住',
+    value: 32,
   },
   {
-    name: '运营中',
-    value: 13,
+    name: '行',
+    value: 16,
   },
   {
     name: '其他',
-    value: 1,
+    value: 14,
   },
 ])
 </script>

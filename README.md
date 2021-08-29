@@ -1,6 +1,6 @@
 # vite2-vue3-admin
 
-#### Vite2 + Vue3.0 + ant-design 2.x
+#### Vite2 + Vue3.x + ant-design 2.x
 
 [admin.lwp.fun ](http://admin.lwp.fun) tips：可注册成功后登入
 
@@ -307,9 +307,10 @@ const isActive = option => {
 </style>
 ```
 
-##### 图例
+##### 视图
 
-![pc](docs/img/pc.png)
-
-![iphone](docs/img/phone.png)![iphone2](docs/img/phone2.png)
-![iphone3](docs/img/phone3.png)![iphone4](docs/img/phone4.png)
+![pc](https://cdn200.oss-cn-hangzhou.aliyuncs.com/md/img/pc.png)
+![iphone](https://cdn200.oss-cn-hangzhou.aliyuncs.com/md/img/phone.png)
+![iphone2](https://cdn200.oss-cn-hangzhou.aliyuncs.com/md/img/phone2.png)
+![iphone3](https://cdn200.oss-cn-hangzhou.aliyuncs.com/md/img/phone3.png)
+![iphone4](https://cdn200.oss-cn-hangzhou.aliyuncs.com/md/img/phone4.png)

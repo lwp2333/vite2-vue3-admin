@@ -6,9 +6,9 @@
 
 <script setup>
 import zhCN from 'ant-design-vue/es/locale/zh_CN'
-import useRem from '@/hooks/useRem'
+// import useRem from '@/hooks/useRem'
 
-useRem()
+// useRem()
 </script>
 
 <style lang="less"></style>
