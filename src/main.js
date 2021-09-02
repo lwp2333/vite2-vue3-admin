@@ -3,6 +3,7 @@ import App from './App.vue'
 import Router from './router'
 import Store from './store'
 import 'normalize.css' // 样式重置各浏览器统一
+import './styles/nprogress.less'
 import './styles/global.less' // 全局样式
 import Antd from 'ant-design-vue'
 import './styles/theme.less' // ant 主题Y样式

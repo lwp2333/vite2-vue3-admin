@@ -9,7 +9,7 @@
       breakpoint="lg"
       @breakpoint="breakpoint"
     >
-      <sider-content />
+      <sider-content v-show="!breakPointValue" />
     </a-layout-sider>
     <a-drawer :visible="drawerSider" :closable="false" :width="240" placement="left" :bodyStyle="drawerBodyStyle" @close="onClose">
       <sider-content />
@@ -161,5 +161,11 @@ const loginOut = () => {
   overflow: auto;
   background-color: #fff;
   box-shadow: 6px 6px 4px #f0f2f5;
+}
+.ant-breadcrumb {
+  padding: 0 4px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 </style>

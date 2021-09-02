@@ -1,5 +1,4 @@
 import NProgress from 'nprogress'
-import 'nprogress/nprogress.css'
 import { createRouter, createWebHashHistory } from 'vue-router'
 import { getAccessToken, getRefreshToken } from '@/utils/auth'
 
