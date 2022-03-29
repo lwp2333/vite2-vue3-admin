@@ -14,7 +14,7 @@ export default defineConfig(({ command, mode }) => {
       }),
     ],
     // 基础配置
-    base: mode === 'development' ? '/' : 'https://cdn200.oss-cn-hangzhou.aliyuncs.com/',
+    base: mode === 'development' ? '/' : 'https://cdn200.oss-cn-hangzhou.aliyuncs.com/next-admin',
     publicDir: 'public',
     resolve: {
       alias: {
