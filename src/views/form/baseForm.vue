@@ -44,12 +44,12 @@
     <a-form-item label="活动描述" name="desc">
       <a-textarea v-model:value="form.desc" />
     </a-form-item>
-    <a-form-item :wrapper-col="{ span: 14, offset: 6 }">
+    <div style="display: flex; justify-content: center">
       <a-space size="large">
         <a-button type="primary" @click="onSubmit"> 确定 </a-button>
         <a-button @click="resetForm"> 重置 </a-button>
       </a-space>
-    </a-form-item>
+    </div>
   </a-form>
 </template>
 
@@ -109,3 +109,4 @@ const rules = {
   desc: [NotEmpty('活动描述')],
 }
 </script>
+

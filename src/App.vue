@@ -4,11 +4,8 @@
   </a-config-provider>
 </template>
 
-<script setup>
+<script>
 import zhCN from 'ant-design-vue/es/locale/zh_CN'
-// import useRem from '@/hooks/useRem'
-
-// useRem()
 </script>
 
 <style lang="less"></style>

@@ -4,7 +4,7 @@
 
 <script setup>
 import * as Echarts from 'echarts'
-import { computed, onMounted, reactive, ref } from 'vue'
+import { computed, onMounted, reactive, ref, nextTick } from 'vue'
 
 const props = defineProps({
   width: {
@@ -189,9 +189,11 @@ const mainAction = () => {
 }
 
 onMounted(() => {
-  initEchart()
-  initPieEvent()
-  autoSwipe()
+  nextTick(() => {
+    initEchart()
+    initPieEvent()
+    autoSwipe()
+  })
 })
 </script>
 

@@ -4,7 +4,7 @@
 
 <script setup>
 import * as Echarts from 'echarts'
-import { computed, onMounted, ref, toRefs, watch } from 'vue'
+import { computed, nextTick, onMounted, ref } from 'vue'
 
 const props = defineProps({
   width: {
@@ -109,7 +109,9 @@ const initEchart = () => {
 }
 
 onMounted(() => {
-  initEchart()
+  nextTick(() => {
+    initEchart()
+  })
 })
 </script>
 
