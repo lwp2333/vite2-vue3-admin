@@ -2,7 +2,7 @@
 
 #### Vite2 + Vue3.x + ant-design 2.x
 
-[admin.lwp.fun ](http://admin.lwp.fun) tips：可注册成功后登入
+[admin.lwp.fun ](http://admin.ikun.js.cn) tips：可注册成功后登入
 
 ##### 目录树
 
